@@ -1,0 +1,5 @@
+17c17,21
+> 
+> $m = new Mongo();
+> $db = $m->montreal;
+> $db->authenticate('montreal', 'letmein!');
