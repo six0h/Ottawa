@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('../config.php');
 ?>
 
 <script type="text/javascript">
