@@ -23,8 +23,8 @@ $creds = array(
 	'cookie' => true
 );
 
-$fb = new Facebook($creds);
-$signed_request = $fb->getSignedRequest();
+$facebook = new Facebook($creds);
+$signed_request = $facebook->getSignedRequest();
 
 $date = date('U');
 
