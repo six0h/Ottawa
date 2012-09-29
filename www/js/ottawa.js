@@ -62,7 +62,7 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
                         terms: "Please check the box to acknowledge you have read the terms and conditions and agree to them."
                 },
 
-		errorLabelContainer: '.error-wrapper',
+		errorPlacement: '.error-wrapper',
 		wrapper: 'li',
 
 		submitHandler: function(form) {
