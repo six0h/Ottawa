@@ -9,7 +9,7 @@ a:active { outline: none; }
 .clear { clear: both; }
 
 #page-wrapper { position: relative; width: 810px; height: 1530px; overflow: hidden; margin: 0 auto; background: #fff; }
-#page-wrapper .page { width: 810px; height: 1530px; float: left; }
+#page-wrapper .page { width: 810px; height: 1530px; }
 
 #like-gate { background: url(../img/bg-likegate.jpg) no-repeat; width: 810px; height: 1530px; }
 
@@ -49,10 +49,15 @@ a:active { outline: none; }
 .page .form label { display: block; width: 75px; float: left; padding: 4px 0 0 0; }
 .page .form .news-li label { width: 220px; }
 .page .form input { border: 1px solid #000; border-radius: 3px; background: #e6e4ba; padding: 3px; }
+.page .form ul li span { position: absolute; display: block; right: left: 0px; width: 300px; background: red; color: #fff; z-index: 1; padding: 3px; border-radius: 5px; }
+.page .form ul li span label { width: 100%; }
 
 .page .form-confirm { position: absolute; width: 300px; top: 310px; left: 440px; }
 .page .form-confirm p { margin: 0px 0 20px 0; }
 .page .form-confirm .clip { clear: both; display: block; margin: 10px 0 0 0; }
 .page .form-confirm .submit { margin: 20px 0 0 0; }
+.page .form-confirm ul { list-style: none; }
+.page .form-confirm ul li span { position: absolute; right: 0px; width: 300px; background: red; color: #fff; z-index: 1; padding: 3px; border-radius: 5px; }
+.page .form-confirm ul li span label { width: 100%; }
 
 #thanks { background: url(../img/bg-thanks.jpg) no-repeat; }

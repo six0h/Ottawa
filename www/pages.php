@@ -15,7 +15,7 @@
 		<a href="#" class="music-link">Music</a> 
 	</div>
 
-	<form method="POST" action="ajax/adduser.php" class="user_form">
+	<form method="POST" action="ajax/adduser.php" class="user_form" id="photo_form">
 	<div class="form">
 		<ul>
 			<li>
@@ -32,7 +32,7 @@
 			</li>
 			<li>
 				<label for="hometown">Hometown</label> 
-				<input type="text" name="email"/>
+				<input type="text" name="hometown"/>
 			</li>
 			<li>
 				<label for="province">Province</label> 
@@ -40,17 +40,23 @@
 			</li>
 			<li class="news-li">
 				<label for="news">Yes, I am interested in hearing from Ottawa Tourism</label> 
-				<input type="checkbox" name="news"/>
+				<input type="checkbox" name="news" CHECKED/>
 			</li>
 		</ul> 
 	</div>
 
 	<div class="form-confirm">
-		<p>Clips should be no longer than 15 seconds and preferably in high definition. Raw footage welcome, don't worry about editing.</p> 
-		<input type="checkbox" name="agree"/>
-		<label for="agree">I certify I have read the <a href="#rules" class="terms">Terms & Conditions</a> and that this clip was made by me and includes recordings of only me and/or my friends</label> 
-		<input type="file" name="clip" class="clip"/>
-		<input type="submit" value="Submit" name="submit" class="submit" />
+		<ul>
+			<li><p>Clips should be no longer than 15 seconds and preferably in high definition. Raw footage welcome, don't worry about editing.</p> </li>
+			<li>
+				<input type="checkbox" name="agree"/>
+				<label for="agree">I certify I have read the <a href="#rules" class="terms">Terms & Conditions</a> and that this clip was made by me and includes recordings of only me and/or my friends</label> 
+			</li>
+			<li>
+				<input type="file" name="clip" class="clip"/>
+				<input type="submit" value="Submit" name="submit" class="submit" />
+			</li>
+		</ul> 
 	</div> 
 	</form>
 </div>
@@ -63,7 +69,7 @@
 		<a href="#" class="music-link">Music</a> 
 	</div>
 
-	<form method="POST" action="ajax/adduser.php" class="user_form">
+	<form method="POST" action="ajax/adduser.php" class="user_form" id="video_form">
 	<div class="form">
 		<ul>
 			<li>
@@ -111,7 +117,7 @@
 		<a href="#" class="music-link">Music</a> 
 	</div>
 
-	<form method="POST" action="ajax/adduser.php" class="user_form">
+	<form method="POST" action="ajax/adduser.php" class="user_form" id="music_form">
 	<div class="form">
 		<ul>
 			<li>

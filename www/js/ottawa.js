@@ -47,7 +47,8 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
                         },
 			hometown: "required",
 			province: "required",
-                        terms: "required"
+                        terms: "required",
+			agree: "required"
                 },
 
                 messages: {
@@ -59,36 +60,32 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
                         },
 			hometown: "Please tell us where you're from.",
 			province: "Please let us know what province you live in.",
-                        terms: "Please check the box to acknowledge you have read the terms and conditions and agree to them."
+                        terms: "Please check the box to acknowledge you have read the terms and conditions and agree to them.",
+			agree: "Please agree to the terms and conditions"
                 },
 
-		errorPlacement: '.error-wrapper',
-		wrapper: 'li',
+		errorPlacement: function(error, element) {
+			error.appendTo( element.parent('li') );
+		},
+		wrapper: 'span',
 
 		submitHandler: function(form) {
 			// HIJACK DOS FORM AND SUBMIT THROUGH AJAX
 			$(form).ajaxSubmit({
 				dataType: 'json',
-				url: 'ajax/addentry.php',
-				type: 'POST',
 				success: function(res) {
-
-					if(res.status == 'success') {
-						callPage('thanks');
-					} else if (res.status == 'fail') {
-						alert(res.errors[0]);
-					} else if (res.status == 'alreadyentered') {
-						alert(res.errors[0]);
+					if(res.status == 200) {
 						callPage('thanks');
 					}
-
 				}
 			});
 		}
 
 	};
 
-	$('.user_form').validate(validOptions);
+	$('#photo_form').validate(validOptions);
+	$('#video_form').validate(validOptions);
+	$('#music_form').validate(validOptions);
 
 	function callPage(pageId) {
 		$('.active').animate({'left':'50px'}).animate({'left':'-810px'},function() {
