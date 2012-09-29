@@ -24,7 +24,9 @@ $creds = array(
 );
 
 $facebook = new Facebook($creds);
-$signed_request = $facebook->getSignedRequest();
+$sr = $facebook->getSignedRequest();
+
+$liked = $sr['page']['liked'];
 
 $date = date('U');
 
@@ -35,7 +37,7 @@ $date = date('U');
 
 <head>
 
-	<title>Tourism Montreal - Taste Montreal</title>
+	<title>Love Ottawa, Canada</title>
 	<meta charset="utf-8" />
 
 	<link rel="stylesheet" type="text/css" href="css/style.css?date=<?php $date; ?>" />
@@ -54,6 +56,14 @@ $date = date('U');
 <div id="fb-root"></div>
 
 <div id="page-wrapper">
+
+<?php if($liked == 1) {
+	require_once('pages.php'); 
+} else { ?>
+	<div id="like-gate"></div> 
+<?php } ?>
+
+</div>
 
 
 <script type="text/javascript">
