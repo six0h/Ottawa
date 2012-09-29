@@ -1,4 +1,4 @@
-<div id="one" class="page">
+<div id="one" class="page active">
 	<div class="file-type-choice">
 		<span class="submit-header"></span> 
 		<a href="#" class="photo-link">Photo</a>

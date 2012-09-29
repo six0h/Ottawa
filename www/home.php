@@ -47,7 +47,7 @@ $date = date('U');
 	<script type="text/javascript" src="js/jquery-form.js"></script>
 	<script type="text/javascript" src="js/jquery-validate.js"></script>
 	<script type="text/javascript" src="js/jquery-fancybox.js"></script>
-	<script type="text/javascript" src="js/montreal.js?date=<?php $date; ?>"></script>
+	<script type="text/javascript" src="js/ottawa.js?date=<?php $date; ?>"></script>
 
 </head>
 
