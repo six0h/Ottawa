@@ -19,8 +19,8 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 
 	// DEFINE GLOBALS
 	var	pages = $('#page-wrapper>div'),
-		page_tab = 'https://apps3.ionflo.com/ottawa/www/home.php',
-		channel = '//apps3.ionflo.com/ottawa/www/channel.html',
+		page_tab = 'https://home.codyhalovich.com/ottawa/www/home.php',
+		channel = '//home.codyhalovich.com/ottawa/www/channel.html',
 		app_id = '368337929912122',
 		user_email = '';
 
