@@ -92,7 +92,7 @@ echo '</section>';
 	<div id="login_modal" class="modal">
 		<span class="modalarrow"></span>
 		<h3>Login</h3>
-		<form method="POST" action="../facebook/ajax/login.php" id="login_form">
+		<form method="POST" action="../www/ajax/login.php" id="login_form">
 			<fieldset>
 				<input type="text" name="email" id="email" value="E-Mail Address">
 				<input type="password" name="password" id="password" value="Password">
