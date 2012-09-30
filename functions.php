@@ -55,7 +55,7 @@ function check_bans() {
 
         global $db;
         $crit = array('ip' => $_SERVER['REMOTE_ADDR']);
-        $count = $db->ip->count($crit);
+        $count = $db->count('ip',$crit);
         return($count);
 
 }

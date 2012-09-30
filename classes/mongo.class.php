@@ -28,15 +28,13 @@ class Db {
 
 	public function insert($collection,$data) {
 		$this->db->$collection->insert($data);
-		$last_id = $data['_id'];
-		$this->lastId = $last_id['$id'];
 	}
 
 	public function update($collection,$crit,$data) {
 		$this->db->$collection->update($crit,$data);
 	}
 
-	public function remove($collection,$crit) {
+	public function remove($collection,Array $crit) {
 		$this->db->$collection->remove($crit);
 	}
 

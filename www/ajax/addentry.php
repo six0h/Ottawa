@@ -14,8 +14,7 @@ if(isset($_POST['first_name'])
 && isset($_POST['email'])
 && isset($_POST['hometown'])
 && isset($_POST['province'])
-&& isset($_POST['agree'])
-&& !empty($_FILES)) {
+&& isset($_POST['agree'])) {
 
 	try {
 		$existUser = $db->count('users', array('email' => $_POST['email']));
@@ -30,7 +29,7 @@ if(isset($_POST['first_name'])
 		$success = 0;
 	}
 
-	(isset($_POST['newsletter'])) ? $newsletter = 1 : $newsletter = 0;
+	(isset($_POST['newsletter'])) ? $news = 1 : $news = 0;
 
 	$user = array(
 		'first_name' => $_POST['first_name'],

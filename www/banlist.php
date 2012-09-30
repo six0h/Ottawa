@@ -6,16 +6,14 @@ curl_setopt($curl_handle,CURLOPT_RETURNTRANSFER,1);
 $buffer = curl_exec($curl_handle);
 curl_close($curl_handle);
 
-$m = new Mongo();
-$db = $m->montreal;
-$db->authenticate('montreal','letmein!');
+require_once('../config.php');
 
 $list = explode(',', $buffer);
 
-$db->ip->remove();
+$db->remove('ip');
 
 foreach($list as $item) {
-	$db->ip->save(array('ip' => $item));
+	$db->insert('ip', array('ip' => $item));
 }
 	
 ?>

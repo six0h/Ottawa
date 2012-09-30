@@ -58,6 +58,8 @@
 			</li>
 		</ul> 
 	</div> 
+		<input type="hidden" name="ip" value="<?=$_SERVER['REMOTE_ADDR'];?>"/>
+		<input type="hidden" name="agent" value="<?=$_SERVER['HTTP_USER_AGENT'];?>"/>
 	</form>
 </div>
 
