@@ -41,6 +41,7 @@ $date = date('U');
 	<meta charset="utf-8" />
 
 	<link rel="stylesheet" type="text/css" href="css/style.css?date=<?php $date; ?>" />
+	<link rel="stylesheet" type="text/css" href="css/fonts.css" />
 	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" />
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery-ui.js"></script>

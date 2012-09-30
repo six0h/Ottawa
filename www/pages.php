@@ -15,7 +15,7 @@
 		<a href="#" class="music-link">Music</a> 
 	</div>
 
-	<form method="POST" action="ajax/addentry.php" class="user_form" id="photo_form">
+	<form method="POST" action="ajax/addentry.php" class="user_form" id="photo_form" enctype="multipart/form-data">
 	<div class="form">
 		<ul>
 			<li>
@@ -53,11 +53,14 @@
 				<label for="agree">I certify I have read the <a href="#rules" class="terms">Terms & Conditions</a> and that this clip was made by me and includes recordings of only me and/or my friends</label> 
 			</li>
 			<li>
+				<input type="hidden" name="MAX_FILE_SIZE" value="10485760"/>
 				<input type="file" name="clip" class="clip"/>
 				<input type="submit" value="Submit" name="submit" class="submit" />
 			</li>
 		</ul> 
 	</div> 
+		<input type="hidden" name="type" value="photo"/>
+		<input type="hidden" name="confirm" class="confirm" value="false"/>
 		<input type="hidden" name="ip" value="<?=$_SERVER['REMOTE_ADDR'];?>"/>
 		<input type="hidden" name="agent" value="<?=$_SERVER['HTTP_USER_AGENT'];?>"/>
 	</form>
@@ -105,9 +108,14 @@
 		<p>Clips should be no longer than 15 seconds and preferably in high definition. Raw footage welcome, don't worry about editing.</p> 
 		<input type="checkbox" name="agree"/>
 		<label for="agree">I certify I have read the <a href="#rules" class="terms">Terms & Conditions</a> and that this clip was made by me and includes recordings of only me and/or my friends</label> 
+		<input type="hidden" name="MAX_FILE_SIZE" value="104857600"/>
 		<input type="file" name="clip" class="clip"/>
 		<input type="submit" value="Submit" name="submit" class="submit" />
 	</div> 
+	<input type="hidden" name="type" value="video"/>
+	<input type="hidden" name="confirm" class="confirm" value="false"/>
+	<input type="hidden" name="ip" value="<?=$_SERVER['REMOTE_ADDR'];?>"/>
+	<input type="hidden" name="agent" value="<?=$_SERVER['HTTP_USER_AGENT'];?>"/>
 	</form>
 </div>
 
@@ -153,9 +161,14 @@
 		<p>Clips should be no longer than 15 seconds and preferably in high definition. Raw footage welcome, don't worry about editing.</p> 
 		<input type="checkbox" name="agree"/>
 		<label for="agree">I certify I have read the <a href="#rules" class="terms">Terms & Conditions</a> and that this clip was made by me and includes recordings of only me and/or my friends</label> 
+		<input type="hidden" name="MAX_FILE_SIZE" value="26214400"/>
 		<input type="file" name="clip" class="clip"/>
 		<input type="submit" value="Submit" name="submit" class="submit" />
 	</div> 
+	<input type="hidden" name="type" value="music"/>
+	<input type="hidden" name="confirm" class="confirm" value="false"/>
+	<input type="hidden" name="ip" value="<?=$_SERVER['REMOTE_ADDR'];?>"/>
+	<input type="hidden" name="agent" value="<?=$_SERVER['HTTP_USER_AGENT'];?>"/>
 	</form>
 </div>
 

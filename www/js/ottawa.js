@@ -68,6 +68,7 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 			error.appendTo( element.parent('li') );
 		},
 		wrapper: 'span',
+		onkeyup: false,
 
 		submitHandler: function(form) {
 			// HIJACK DOS FORM AND SUBMIT THROUGH AJAX
@@ -75,17 +76,26 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 				dataType: 'json',
 				success: function(res) {
 					if(res.status == 200) {
-						console.log('user inserted hopefully');
+						callPage('thanks');
+					} else if (res.status == 500) {
+						console.log(error);
+						alert("There was a server error. Please try again.");
+					} else if (res.status == 502) {
+						var output = "You have already uploaded this file. Please submit again to confirm that you would like to overwrite it.";
+						alert(output);
+						$('.confirm').val('true');
 					}
+				},
+
+				error: function(res) {
+					alert('error');
 				}
 			});
 		}
 
 	};
 
-	$('#photo_form').validate(validOptions);
-	$('#video_form').validate(validOptions);
-	$('#music_form').validate(validOptions);
+	$('#photo_form,#video_form,#music_form').validate(validOptions);
 
 	function callPage(pageId) {
 		$('.active').animate({'left':'50px'}).animate({'left':'-810px'},function() {

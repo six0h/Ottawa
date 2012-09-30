@@ -22,8 +22,8 @@ class Db {
 	}
 
 	public function count($collection,$crit) {
-		$user = $this->db->$collection->count($crit);
-		return $user;
+		$count = $this->db->$collection->count($crit);
+		return $count;
 	}
 
 	public function insert($collection,$data) {
