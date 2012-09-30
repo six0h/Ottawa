@@ -75,7 +75,7 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 				dataType: 'json',
 				success: function(res) {
 					if(res.status == 200) {
-						callPage('thanks');
+						console.log('user inserted hopefully');
 					}
 				}
 			});

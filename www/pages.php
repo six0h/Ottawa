@@ -15,7 +15,7 @@
 		<a href="#" class="music-link">Music</a> 
 	</div>
 
-	<form method="POST" action="ajax/adduser.php" class="user_form" id="photo_form">
+	<form method="POST" action="ajax/addentry.php" class="user_form" id="photo_form">
 	<div class="form">
 		<ul>
 			<li>
@@ -69,7 +69,7 @@
 		<a href="#" class="music-link">Music</a> 
 	</div>
 
-	<form method="POST" action="ajax/adduser.php" class="user_form" id="video_form">
+	<form method="POST" action="ajax/addentry.php" class="user_form" id="video_form">
 	<div class="form">
 		<ul>
 			<li>
@@ -117,7 +117,7 @@
 		<a href="#" class="music-link">Music</a> 
 	</div>
 
-	<form method="POST" action="ajax/adduser.php" class="user_form" id="music_form">
+	<form method="POST" action="ajax/addentry.php" class="user_form" id="music_form">
 	<div class="form">
 		<ul>
 			<li>
