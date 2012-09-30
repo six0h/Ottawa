@@ -131,7 +131,7 @@ if(isset($_POST['addUser']) && $_POST['userEmail'] != '') {
 		$success = '0';
 	}
 
-	($userAdmin == 'on') ? $userAdmin = 1 : $userAdmin = 0;
+	($userAdmin == 'on') ? $userAdmin = 1 : unset($userAdmin);
 
 	// CHECK FOR EXISTING EMAIL ADDRESS
 	$crit = array('email' => $userEmail);
@@ -145,8 +145,8 @@ if(isset($_POST['addUser']) && $_POST['userEmail'] != '') {
 				'first_name' => $userFirstName,
 				'last_name' => $userLastName,
 				'email' => $userEmail,
-				'admin' => $userAdmin,
 				'date' => strtotime($userDate));
+			if(isset($userAdmin)) $crit['admin'] = $userAdmin;
 			$db->insert('users',$crit);
 		}
 	}
