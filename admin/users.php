@@ -129,8 +129,10 @@ if(isset($_POST['addUser']) && $_POST['userEmail'] != '') {
 	if($userPass != $userPass2) {
 		$errors[] = 'Passwords Do Not Match';
 		$success = '0';
-	
 	}
+
+	($userAdmin == 'on') ? $userAdmin = 1 : $userAdmin = 0;
+
 	// CHECK FOR EXISTING EMAIL ADDRESS
 	$crit = array('email' => $userEmail);
 	$numRows = $db->count('users',$crit);
@@ -166,7 +168,8 @@ if(isset($_GET['add']) || isset($_POST['tryadd'])) {
 	<div class="loginBox">
 		<h3>Add User</h3>
 		<form method="POST" action="<?=$_SERVER['PHP_SELF'];?>?p=users" id="addForm">
-		<div id="userNameDiv"><label for="userName">Name</label><input type="text" id="userName" name="userName" value="<?=$userName;?>" /></div>
+		<div id="userFirstNameDiv"><label for="userFirstName">First Name</label><input type="text" id="userFirstName" name="userFirstName" value="<?=$userFirstName;?>" /></div>
+		<div id="userLastNameDiv"><label for="userLastName">Last Name</label><input type="text" id="userLastName" name="userLastName" value="<?=$userLastName;?>" /></div>
 		<div id="userEmailDiv"><label for="userEmail">Email</label><input type="text" id="userEmail" name="userEmail" value="<?=$userEmail;?>" /></div>
 		<div id="userPassDiv"><label for="userPass">Password</label><input type="text" id="userPass" name="userPass"  value="" /></div>
 		<div id="userPass2Div"><label for="userPass2">... Again</label><input type="text" id="userPass2" name="userPass2" value="" /></div>
@@ -193,7 +196,6 @@ echo "<br />";
 			<th>First</th>
 			<th>Last</th>
 			<th>Email</th>
-			<th>Blogger</th>
 			<th>Date</th>
 			<th>IP</th>
 			<th>Edit</th>
@@ -205,31 +207,11 @@ echo "<br />";
 		foreach($results as $res) {
 			foreach($res as $key => $value) $$key = $value;
 			if($res['ip'] == '') $ip = '0.0.0.0';
-			switch($blogger) {
-				case '0':
-					$blogger = 'Lauren DeSantis';
-				break;
-				case '1':
-					$blogger = 'Darlene Horn';
-				break;
-				case '2':
-					$blogger = 'Mardi Michaels';
-				break;
-				case '3':
-					$blogger = 'Mijune Pak';
-				break;
-				case '4':
-					$blogger = 'Meghan Mallory';
-				break;
-				default:
-					$blogger = 'Abandoned';
-			}
 		?>
 		<tr id="user_<?php echo $_id;?>">
 			<td><?php echo $first_name; ?></td>
 			<td><?php echo $last_name; ?></td>
 			<td><?php echo $email; ?></td>
-			<td><?php echo $blogger; ?></td>
 			<td><?php echo date('m/d/Y h:i:s', $date->sec); ?></td>
 			<td><?php echo $ip; ?></td>
 			<td><a href="index.php?p=users&edit=1&id=<?php echo $_id;?>">Edit</a></td>
@@ -243,38 +225,9 @@ echo "<br />";
 $crit = array('admin' => array('$exists' => false));
 $results = $db->select('users',$crit);
 $count = $db->count('users',$crit);
-$lauren = $db->count('users',array('blogger' => '0'));
-$darlene = $db->count('users',array('blogger' => '1'));
-$mardi = $db->count('users',array('blogger' => '2'));
-$mijune = $db->count('users',array('blogger' => '3'));
-$meghan = $db->count('users',array('blogger' => '4'));
-$abandoned = $db->count('users',array('blogger' => array('$exists' => false)));
 echo "<span class='content'>Total Users: ".$count." ( <a href='".$_SERVER['PHP_SELF']."?p=users&add=1'>Add User</a> )</span><a id='exportLink' href='#'>Export to CSV</a>";
 echo "<br />";
 ?>
-
-<table id="blogger_table">
-	<thead>
-		<tr>
-			<th>Lauren DeSantis</th>
-			<th>Darlene Horn</th>
-			<th>Mardi Michels</th>
-			<th>Mijune Pak</th>
-			<th>Meghan Mallory</th>
-			<th>Abandoned</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><?=$lauren?></td>
-			<td><?=$darlene?></td>
-			<td><?=$mardi?></td>
-			<td><?=$mijune?></td>
-			<td><?=$meghan?></td>
-			<td><?=$abandoned?></td>
-		</tr>
-	</tbody>
-</table>
 
 <table class="userTable">
 	<thead>
@@ -282,7 +235,6 @@ echo "<br />";
 			<th>First</th>
 			<th>Last</th>
 			<th>Email</th>
-			<th>Blogger</th>
 			<th>Date</th>
 			<th>IP</th>
 			<th>Edit</th>
@@ -294,37 +246,17 @@ echo "<br />";
 		foreach($results as $res) {
 			foreach($res as $key => $value) $$key = $value;
 			if($res['ip'] == '') $ip = '0.0.0.0';
-			switch($blogger) {
-				case '0':
-					$blogger = 'Lauren DeSantis';
-				break;
-				case '1':
-					$blogger = 'Darlene Horn';
-				break;
-				case '2':
-					$blogger = 'Mardi Michels';
-				break;
-				case '3':
-					$blogger = 'Mijune Pak';
-				break;
-				case '4':
-					$blogger = 'Meghan Mallory';
-				break;
-				default:
-					$blogger = 'Abandoned';
-			}
 		?>
 		<tr id="user_<?php echo $_id;?>">
 			<td><?php echo $first_name; ?></td>
 			<td><?php echo $last_name; ?></td>
 			<td><?php echo $email; ?></td>
-			<td><?php echo $blogger; ?></td>
 			<td><?php echo date('m/d/Y h:i:s', $date->sec); ?></td>
 			<td><?php echo $ip; ?></td>
 			<td><a href="index.php?p=users&edit=1&id=<?php echo $_id;?>">Edit</a></td>
 			<td><a href="index.php?p=users&delete=1&id=<?php echo $_id;?>">Delete</a></td>
 		</tr>
-	<?php } ?>
+		<?php } ?>
 	</tbody>
 </table>
 <script type="text/javascript">
