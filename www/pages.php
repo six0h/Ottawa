@@ -173,5 +173,6 @@
 </div>
 
 <div id="thanks" class="page">
-
+	<a href="#" id="fb-share">Share on Facebook</a>
+	<a href="#" id="twitter-share">Share on Twitter</a>
 </div>

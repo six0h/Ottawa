@@ -105,6 +105,29 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 		$('#' + pageId).animate({'left':'860px'}).animate({'left':'-50px'}).animate({'left':'0'}).addClass('active');
 	}
 
+	$('#fb-share').click(function() {
+		var fbObj = {
+			method: 'apprequests',
+			name: 'Love Ottawa',
+			picture: '',
+			message: 'Win a trip to Ottawa'
+		}
+
+		var callback = function() {
+
+		};
+
+		FB.ui(fbObj,callback);
+		return false;
+	});
+
+	$('#twitter-share').click(function() {
+		var message = encodeURIComponent("Love Ottawa");
+		window.open('http://twitter.com/home?status='+message);
+
+		return false;
+	});
+
 
 	//INITIALIZE FACEBOOK
 	fbInit();

@@ -41,7 +41,7 @@ a:active { outline: none; }
 #video .file-type-choice,
 #music .file-type-choice { top: 30px; left: 20%; }
 
-#one { left: 0; }
+#thanks { left: 0; }
 
 .page .form { float: left; width: 300px; position: absolute; top: 300px; left: 175px; }
 .page .form ul { list-style: none; }
@@ -63,3 +63,5 @@ a:active { outline: none; }
 .submit { display: block; border: 0; width: 121px; height: 66px; background: url(../img/submit-btn.png) no-repeat; text-indent: -9999pt; }
 
 #thanks { background: url(../img/bg-thanks.jpg) no-repeat; }
+#thanks #fb-share { position: absolute; top: 343px; left: 114px; display: block; border: 0; width: 114px; height: 39px; background: url(../img/fb-share.png) no-repeat; text-indent: -9999pt; }
+#thanks #twitter-share { position: absolute; top: 343px; left: 240px; display: block; border: 0; width: 114px; height: 39px; background: url(../img/twitter-share.png) no-repeat; text-indent: -9999pt; }
