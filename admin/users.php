@@ -124,14 +124,16 @@ if(isset($_POST['addUser']) && $_POST['userEmail'] != '') {
 	$userAdmin	= $_POST['userAdmin'];
 	$userPass	= $_POST['userPass'];
 	$userPass2	= $_POST['userPass2'];
-	$userDate 	= date('U');
+	$userDate 	= new MongoDate();
 
 	if($userPass != $userPass2) {
 		$errors[] = 'Passwords Do Not Match';
 		$success = '0';
 	}
 
-	($userAdmin == 'on') ? $userAdmin = 1 : unset($userAdmin);
+	if(isset($userAdmin)) {
+		$userAdmin = 1;
+	}
 
 	// CHECK FOR EXISTING EMAIL ADDRESS
 	$crit = array('email' => $userEmail);
@@ -145,7 +147,7 @@ if(isset($_POST['addUser']) && $_POST['userEmail'] != '') {
 				'first_name' => $userFirstName,
 				'last_name' => $userLastName,
 				'email' => $userEmail,
-				'date' => strtotime($userDate));
+				'date' => $userDate);
 			if(isset($userAdmin)) $crit['admin'] = $userAdmin;
 			$db->insert('users',$crit);
 		}
@@ -162,10 +164,10 @@ if(isset($_POST['addUser']) && $_POST['userEmail'] != '') {
 
 if(isset($_GET['add']) || isset($_POST['tryadd'])) {
 
-	(isset($userAdmin)) ? $checked = 'CHECKED' : $checked = '';
+	(isset($_GET['admin'])) ? $checked = 'CHECKED' : $checked = '';
 
 ?>
-	<div class="loginBox">
+	<div class="modal" id="add_user">
 		<h3>Add User</h3>
 		<form method="POST" action="<?=$_SERVER['PHP_SELF'];?>?p=users" id="addForm">
 		<div id="userFirstNameDiv"><label for="userFirstName">First Name</label><input type="text" id="userFirstName" name="userFirstName" value="<?=$userFirstName;?>" /></div>
@@ -174,7 +176,7 @@ if(isset($_GET['add']) || isset($_POST['tryadd'])) {
 		<div id="userPassDiv"><label for="userPass">Password</label><input type="text" id="userPass" name="userPass"  value="" /></div>
 		<div id="userPass2Div"><label for="userPass2">... Again</label><input type="text" id="userPass2" name="userPass2" value="" /></div>
 		<div id="userAdminDiv" style="margin-top: 20px;"><label for="userAdmin">Admin</label><input type="checkbox" id="userAdmin" name="userAdmin" <?=$checked;?> /></div>
-		<div id="userSubmitDiv"><input type="submit" name="addUser" id="addUser" value="Add User" /></div>
+		<div id="userSubmitDiv"><input type="submit" name="addUser" id="addUser" class="submit" value="Add User" /></div><br class="clear"/>
 		<input type="hidden" name="tryadd" id="tryadd" value="1" />
 		</form>
 	</div>
@@ -186,7 +188,7 @@ if(isset($_GET['add']) || isset($_POST['tryadd'])) {
 $crit = array('admin' => 1);
 $results = $db->select('users',$crit);
 $count = $db->count('users',$crit);
-echo "<span class='content'>Total Users: ".$count." ( <a href='".$_SERVER['PHP_SELF']."?p=users&add=1'>Add User</a> )</span><a id='exportLink' href='#'>Export to CSV</a>";
+echo "<span class='content'>Total Users: ".$count." ( <a href='".$_SERVER['PHP_SELF']."?p=users&add=1&admin=1'>Add User</a> )</span><a id='exportLink' href='#'>Export to CSV</a>";
 echo "<br />";
 ?>
 

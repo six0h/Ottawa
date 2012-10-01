@@ -43,3 +43,7 @@ table { margin-bottom: 20px; width: 100%; }
 tr { margin: 3px 0; font-size: 1.1em; border: 1px solid #404040;  }
 th { background: #707070; }
 td, th { padding: 4px; text-align: center; width: 100px; border: 1px solid #000; }
+
+#add_user { width: 300px; margin: 0 0 20px 0; }
+#add_user .submit { background: url(../img/registerbtn.png) no-repeat; }
+
