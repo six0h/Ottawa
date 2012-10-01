@@ -168,6 +168,7 @@ if(isset($_GET['add']) || isset($_POST['tryadd'])) {
 
 ?>
 	<div class="modal" id="add_user">
+		<a href="<?=$_SERVER['PHP_SELF']; ?>" class="close" />Close</a>
 		<h3>Add User</h3>
 		<form method="POST" action="<?=$_SERVER['PHP_SELF'];?>?p=users" id="addForm">
 		<div id="userFirstNameDiv"><label for="userFirstName">First Name</label><input type="text" id="userFirstName" name="userFirstName" value="<?=$userFirstName;?>" /></div>
@@ -192,7 +193,7 @@ echo "<span class='content'>Total Users: ".$count." ( <a href='".$_SERVER['PHP_S
 echo "<br />";
 ?>
 
-<table class="userTable">
+<table class="modal">
 	<thead>
 		<tr>
 			<th>First</th>
@@ -231,7 +232,7 @@ echo "<span class='content'>Total Users: ".$count." ( <a href='".$_SERVER['PHP_S
 echo "<br />";
 ?>
 
-<table class="userTable">
+<table class="modal">
 	<thead>
 		<tr>
 			<th>First</th>

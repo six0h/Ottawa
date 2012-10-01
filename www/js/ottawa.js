@@ -17,13 +17,14 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 /*///////////////////////////////////////////////
 
 
-	// DEFINE GLOBALS
+// DEFINE GLOBALS
 	var	pages = $('#page-wrapper>div'),
-		page_tab = 'https://home.codyhalovich.com/ottawa/www/home.php',
-		channel = '//home.codyhalovich.com/ottawa/www/channel.html',
+		page_tab = 'https://apps3.ionflo.com/ottawa/www/home.php',
+		channel = '//apps3.ionflo.com/ottawa/www/channel.html',
 		app_id = '368337929912122',
 		user_email = '';
 
+// SETUP LINKS TO CALL PAGES
 	$('.photo-link').click(function() {
 		callPage('photo');
 	});
@@ -36,6 +37,16 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 		callPage('music');
 	});
 
+// FUNCTION TO CALL PAGES
+	function callPage(pageId) {
+		$('.active').animate({'left':'50px'}).animate({'left':'-810px'},function() {
+			$(this).css('left','810px').removeClass('active');
+		});
+
+		$('#' + pageId).animate({'left':'860px'}).animate({'left':'-50px'}).animate({'left':'0'}).addClass('active');
+	}
+
+// VALIDATOR OPTIONS
 	var validOptions = {
                
 	        rules: {
@@ -68,8 +79,9 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 			error.appendTo( element.parent('li') );
 		},
 		wrapper: 'span',
-		onkeyup: false,
+		onkeyup: false, // DO NOT VALIDATE ON KEYUP, WAIT UNTIL BLUR
 
+		// IF VALIDATE IS SUCCESSFUL, SUBMIT THE FORM WITH JQUERY FORM
 		submitHandler: function(form) {
 			// HIJACK DOS FORM AND SUBMIT THROUGH AJAX
 			$(form).ajaxSubmit({
@@ -95,16 +107,11 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 
 	};
 
+// VALIDATE FORMS
 	$('#photo_form,#video_form,#music_form').validate(validOptions);
 
-	function callPage(pageId) {
-		$('.active').animate({'left':'50px'}).animate({'left':'-810px'},function() {
-			$(this).css('left','810px').removeClass('active');
-		});
 
-		$('#' + pageId).animate({'left':'860px'}).animate({'left':'-50px'}).animate({'left':'0'}).addClass('active');
-	}
-
+// SHARE BUTTONS ON FINAL PAGE
 	$('#fb-share').click(function() {
 		var fbObj = {
 			method: 'apprequests',
@@ -129,7 +136,7 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 	});
 
 
-	//INITIALIZE FACEBOOK
+//INITIALIZE FACEBOOK
 	fbInit();
 
 	function fbInit() {
@@ -147,13 +154,6 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 		    // MAKE CANVAS AUTOGROW
 		    FB.Canvas.setAutoGrow();
 
-		    //MONITOR LIKE BUTTON FOR STATUS CHANGES, RELOAD ON CHANGE
-		    FB.Event.subscribe('edge.create', function(response) {
-				top.window.location.href = page_tab;
-		    });
-		    FB.Event.subscribe('edge.remove', function(response) {
-				top.window.location.href = page_tab;
-		    });
 		  };
 
 		  // Load the SDK Asynchronously
@@ -164,9 +164,6 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 		     js.src = "//connect.facebook.net/en_US/all.js";
 		     ref.parentNode.insertBefore(js, ref);
 		   }(document));
-
-		
-
 	}
 
 });
