@@ -41,7 +41,7 @@ a:active { outline: none; }
 #video .file-type-choice,
 #music .file-type-choice { top: 30px; left: 20%; }
 
-#thanks { left: 0; }
+#one { left: 0; }
 
 .page .form { float: left; width: 300px; position: absolute; top: 300px; left: 175px; }
 .page .form ul { list-style: none; }

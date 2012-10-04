@@ -87,6 +87,7 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 			$(form).ajaxSubmit({
 				dataType: 'json',
 				success: function(res) {
+					console.log(res);/*
 					if(res.status == 200) {
 						callPage('thanks');
 					} else if (res.status == 500) {
@@ -97,6 +98,7 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 						alert(output);
 						$('.confirm').val('true');
 					}
+					*/
 				},
 
 				error: function(res) {
@@ -108,7 +110,7 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 	};
 
 // VALIDATE FORMS
-	$('#photo_form,#video_form,#music_form').validate(validOptions);
+	$('#photo_forma,#video_form,#music_form').validate(validOptions);
 
 
 // SHARE BUTTONS ON FINAL PAGE

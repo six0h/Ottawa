@@ -1,8 +1,7 @@
 <?php
 
 require_once('../config.php');
-require_once('../functions.php');
-require_once('php-sdk/facebook.php');
+require_once(BASE_PATH . 'sdk/facebook/facebook.php');
 
 $banned = check_bans();
 if($banned > 0) {

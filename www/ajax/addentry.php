@@ -5,6 +5,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 header('Content-type: application/json');
 
 require_once('../../config.php');
+require_once(BASE_PATH . 'sdk/amazon/sdk.class.php');
+
+$s3 = new AmazonS3();
+$bucket = AWS_BUCKET;
 
 $response = array('status'=>200);
 $error = array();
@@ -21,7 +25,9 @@ if(isset($_POST['first_name'])
 	} else {
 		$confirm = true;
 	}
+
 	$response['confirm'] = $confirm;
+
 	// CHECK IF USER EXISTS ALREADY
 	try {
 		$existUser = $db->count('users', array('email' => $_POST['email']));
@@ -66,24 +72,10 @@ if(isset($_POST['first_name'])
 		break;
 	}
 			
-	$uploadTo = $upload_dir . '/' . $user['email'] . '-' . $_FILES['clip']['name'];
-	$fileCheck = $db->count('files', array('file'=>$uploadTo));
-	
 	if($_FILES['clip']['size'] > $size_limit) {
 		$response['status'] = 500;
 		$error[] = 'Your file is too large, please scale it down.';
 		$sizeCheck = '1';
-	}
-
-	if($fileCheck > 0 && $confirm == false && !isset($sizeCheck)) {
-		$response['status'] = 502;
-		$error[] = "You have already uploaded this file. Click Submit again to overwrite it, otherwise, please upload a different file.";
-	} elseif ($fileCheck > 0 && $confirm == true) {
-		$myfile = move_uploaded_file($_FILES['clip']['tmp_name'], $uploadTo); 
-		if(!$myfile) {
-			$response['status'] = 500;
-			$error[] = 'Could not upload file';
-		}
 	}
 
 	if($response['status'] == 200 && $existUser == 0) {
@@ -96,9 +88,34 @@ if(isset($_POST['first_name'])
 
 	}
 
-	if($response['status'] == 200 && $fileCheck == 0) {
+	if($response['status'] == 200) {
+
+		if($_FILES['clip']['name'] != '') {
+			$actual_name = $_FILES['clip']['name'];
+			$tmp = $_FILES['clip']['tmp_name'];
+			$size = $_FILES['clip']['size'];
+			$ext = getExtension($_FILES['clip']['name']);
+
+			$file = $s3->create_object(
+				$bucket,
+				$actual_name,
+				array(
+					'fileUpload'	=> $tmp,
+					'storage'	=> AmazonS3::STORAGE_REDUCED,
+					'acl'		=> AmazonS3::ACL_PUBLIC)
+			);
+
+			if(!$file) {
+				$status = 500;
+				$error[] = "Could not upload file.";
+			}
+		}
+
+	}
+
+	if($response['status'] == 200) {
 		try {
-			$fileInsert = array('email'=>$user['email'],'file'=>$uploadTo,'type'=>$_POST['type']);
+			$fileInsert = array('email'=>$user['email'],'file'=>$file->header['x-aws-request-url'],'type'=>$_POST['type'],'date'=>new MongoDate());
 			$db->insert('files', $fileInsert);
 		} catch (MongoException $e) {
 			$error[] = $e->getMessage();
