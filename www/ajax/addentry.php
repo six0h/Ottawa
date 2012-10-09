@@ -2,7 +2,7 @@
 
 header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-header('Content-type: application/json');
+//header('Content-type: application/json');
 
 require_once('../../config.php');
 require_once(BASE_PATH . 'sdk/amazon/sdk.class.php');
@@ -16,8 +16,10 @@ $error = array();
 if(isset($_POST['first_name'])
 && isset($_POST['last_name'])
 && isset($_POST['email'])
-&& isset($_POST['hometown'])
+&& isset($_POST['city'])
 && isset($_POST['province'])
+&& isset($_POST['postal_code'])
+&& isset($_POST['clip_name'])
 && isset($_POST['agree'])) {
 
 	if(isset($_POST['confirm']) && $_POST['confirm'] == 'false') {
@@ -47,6 +49,8 @@ if(isset($_POST['first_name'])
 		'first_name' => $_POST['first_name'],
 		'last_name' => $_POST['last_name'],
 		'email' => $_POST['email'],
+		'city' => $_POST['city'],
+		'postal_code' => $_POST['postal_code'],
 		'province' => $_POST['province'],
 		'agree' => $_POST['agree'],
 		'news' => $news,
@@ -58,17 +62,17 @@ if(isset($_POST['first_name'])
 	switch($_POST['type']) {
 		case 'photo':
 			$upload_dir = UPLOAD_PATH . 'photos';
-			$size_limit = 10485760;
+			$size_limit = 15728640;
 		break;
 
 		case 'music':
 			$upload_dir = UPLOAD_PATH . 'sounds';
-			$size_limit = 26214400;
+			$size_limit = 31457280;
 		break;
 
 		case 'video':
 			$upload_dir = UPLOAD_PATH . 'videos';
-			$size_limit = 104857600;
+			$size_limit = 110100480;
 		break;
 	}
 			
@@ -91,10 +95,10 @@ if(isset($_POST['first_name'])
 	if($response['status'] == 200) {
 
 		if($_FILES['clip']['name'] != '') {
-			$actual_name = $_FILES['clip']['name'];
 			$tmp = $_FILES['clip']['tmp_name'];
 			$size = $_FILES['clip']['size'];
 			$ext = getExtension($_FILES['clip']['name']);
+			$actual_name = $user['email'].'-'.$_POST['clip_name'].'.'.$ext;
 
 			$file = $s3->create_object(
 				$bucket,

@@ -8,6 +8,11 @@
 /*
 /*///////////////*/
 
+// SETUP VIDEO PLAYER
+jwplayer('demovideo').setup({
+	flashplayer: "./js/player.swf",
+});
+
 $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 
 /*///////////////////////////////////////////////
@@ -37,13 +42,18 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 		callPage('music');
 	});
 
+// SEE WHAT OTHERS HAVE SUBMITTED
+	$('.fancy').fancybox();
+
 // FUNCTION TO CALL PAGES
 	function callPage(pageId) {
+
 		$('.active').animate({'left':'50px'}).animate({'left':'-810px'},function() {
 			$(this).css('left','810px').removeClass('active');
 		});
 
-		$('#' + pageId).animate({'left':'860px'}).animate({'left':'-50px'}).animate({'left':'0'}).addClass('active');
+		$('#' + pageId).animate({'left':'860px'}).animate({'left':'-50px'}).animate({'left':'0'}, function() { FB.Canvas.scrollTo(0,0); }).addClass('active');
+		
 	}
 
 // VALIDATOR OPTIONS
@@ -56,8 +66,10 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
                                 required: true,
                                 email: true
                         },
-			hometown: "required",
+			city: "required",
 			province: "required",
+			postal_code: "required",
+			clip_name: "required",
                         terms: "required",
 			agree: "required"
                 },
@@ -69,8 +81,10 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
                                 required: "Please provide your email address.",
                                 email: "Please provide a valid email address."
                         },
-			hometown: "Please tell us where you're from.",
+			city: "Please tell us where you're from.",
 			province: "Please let us know what province you live in.",
+			postal_code: "Please provide your postal code",
+			clip_name: "Please provide a name for your file.",
                         terms: "Please check the box to acknowledge you have read the terms and conditions and agree to them.",
 			agree: "Please agree to the terms and conditions"
                 },
@@ -86,8 +100,11 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 			// HIJACK DOS FORM AND SUBMIT THROUGH AJAX
 			$(form).ajaxSubmit({
 				dataType: 'json',
+				beforeSubmit: function(res) {
+					$('#loading').show();
+				},
 				success: function(res) {
-					console.log(res);/*
+					$('#loading').hide();
 					if(res.status == 200) {
 						callPage('thanks');
 					} else if (res.status == 500) {
@@ -98,7 +115,7 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 						alert(output);
 						$('.confirm').val('true');
 					}
-					*/
+					$('input').val('');
 				},
 
 				error: function(res) {
@@ -110,7 +127,9 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 	};
 
 // VALIDATE FORMS
-	$('#photo_forma,#video_form,#music_form').validate(validOptions);
+	$('#photo_form').validate(validOptions);
+	$('#video_form').validate(validOptions);
+	$('#music_form').validate(validOptions);
 
 
 // SHARE BUTTONS ON FINAL PAGE
@@ -136,6 +155,14 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 
 		return false;
 	});
+
+	$('#submit-more').click(function() {
+		callPage('one');
+	});
+
+
+// T&C
+	$('.terms').fancybox();
 
 
 //INITIALIZE FACEBOOK

@@ -5,6 +5,10 @@
 		<a href="#" class="video-link">Video</a> 
 		<a href="#" class="music-link">Music</a> 
 	</div> 
+	<a href="#rules" class="terms">Terms & Conditions</a>
+	<a href="#" id="ontario-link" target="_blank">Ontario</a>
+	<a href="#" id="ottawa-link" target="_blank">Ottawa</a>
+	<a class="fancy submitted" href="#demovideo" rel="group">See what others have submitted</a>
 </div>
 
 <div id="photo" class="page">
@@ -31,12 +35,16 @@
 				<input type="text" name="email"/>
 			</li>
 			<li>
-				<label for="hometown">Hometown</label> 
-				<input type="text" name="hometown"/>
+				<label for="city">City</label> 
+				<input type="text" name="city"/>
 			</li>
 			<li>
 				<label for="province">Province</label> 
 				<input type="text" name="province"/>
+			</li>
+			<li>
+				<label for="postal_code">Postal Code</label> 
+				<input type="text" name="postal_code"/>
 			</li>
 			<li class="news-li">
 				<label for="news">Yes, I am interested in hearing from Ottawa Tourism</label> 
@@ -47,15 +55,18 @@
 
 	<div class="form-confirm">
 		<ul>
-			<li><p>Clips should be no longer than 15 seconds and preferably in high definition. Raw footage welcome, don't worry about editing.</p> </li>
+			<li><p>Photos: Photos should be larger than 500kB and at least 1000px by 1000px. JPG preferred, but also TIFF and/or PSD will be accepted. Please no RAW/ARW/NEF.</p>
+			</p>Max Filesize: 10MB</p> </li>
 			<li>
 				<input type="checkbox" name="agree"/>
 				<label for="agree">I certify I have read the <a href="#rules" class="terms">Terms & Conditions</a> and that this clip was made by me and includes recordings of only me and/or my friends</label> 
 			</li>
 			<li>
-				<input type="hidden" name="MAX_FILE_SIZE" value="10485760"/>
+				<label for="clip_name" class="clip_label">Give your file a name</label>
+				<input type="text" name="clip_name"><br />
+				<label for="clip" class="clip_label">Upload a file..</label>
 				<input type="file" name="clip" class="clip"/>
-				<input type="submit" value="Submit" name="submit" class="submit" />
+				<input type="submit" value="Submit" name="submit-photo" class="submit" />
 			</li>
 		</ul> 
 	</div> 
@@ -64,6 +75,9 @@
 		<input type="hidden" name="ip" value="<?=$_SERVER['REMOTE_ADDR'];?>"/>
 		<input type="hidden" name="agent" value="<?=$_SERVER['HTTP_USER_AGENT'];?>"/>
 	</form>
+	<a href="#rules" class="terms">Terms & Conditions</a>
+	<a href="#" id="ontario-link" target="_blank">Ontario</a>
+	<a href="#" id="ottawa-link" target="_blank">Ottawa</a>
 </div>
 
 <div id="video" class="page">
@@ -90,12 +104,16 @@
 				<input type="text" name="email"/>
 			</li>
 			<li>
-				<label for="hometown">Hometown</label> 
-				<input type="text" name="email"/>
+				<label for="city">City</label> 
+				<input type="text" name="city"/>
 			</li>
 			<li>
 				<label for="province">Province</label> 
 				<input type="text" name="province"/>
+			</li>
+			<li>
+				<label for="postal_code">Postal Code</label> 
+				<input type="text" name="postal_code"/>
 			</li>
 			<li class="news-li">
 				<label for="news">Yes, I am interested in hearing from Ottawa Tourism</label> 
@@ -105,18 +123,25 @@
 	</div>
 
 	<div class="form-confirm">
-		<p>Clips should be no longer than 15 seconds and preferably in high definition. Raw footage welcome, don't worry about editing.</p> 
+		<p>Video: Clips should be about 15-30 seconds and preferably in high definition. Raw footage welcome; don't worry about editing. Export as "Web High Definition" if possible in your program.</p>
+		<p>Max Filesize 100MB</p> 
 		<input type="checkbox" name="agree"/>
-		<label for="agree">I certify I have read the <a href="#rules" class="terms">Terms & Conditions</a> and that this clip was made by me and includes recordings of only me and/or my friends</label> 
-		<input type="hidden" name="MAX_FILE_SIZE" value="104857600"/>
+		<label for="agree">I certify I have read the <a href="#rules" class="terms">Terms & Conditions</a> and that this clip was made by me and includes recordings of only me and/or my friends</label>
+		<br class="clear" />
+		<label for="clip_name" class="clip_label">Give your file a name</label>
+		<input type="text" name="clip_name"><br />
+		<label for="clip" class="clip_label">Upload a file..</label>
 		<input type="file" name="clip" class="clip"/>
-		<input type="submit" value="Submit" name="submit" class="submit" />
+		<input type="submit" value="Submit" name="submit-video" class="submit" />
 	</div> 
 	<input type="hidden" name="type" value="video"/>
 	<input type="hidden" name="confirm" class="confirm" value="false"/>
 	<input type="hidden" name="ip" value="<?=$_SERVER['REMOTE_ADDR'];?>"/>
 	<input type="hidden" name="agent" value="<?=$_SERVER['HTTP_USER_AGENT'];?>"/>
 	</form>
+	<a href="#rules" class="terms">Terms & Conditions</a>
+	<a href="#" id="ontario-link" target="_blank">Ontario</a>
+	<a href="#" id="ottawa-link" target="_blank">Ottawa</a>
 </div>
 
 <div id="music" class="page">
@@ -143,12 +168,16 @@
 				<input type="text" name="email"/>
 			</li>
 			<li>
-				<label for="hometown">Hometown</label> 
-				<input type="text" name="email"/>
+				<label for="city">City</label> 
+				<input type="text" name="city"/>
 			</li>
 			<li>
 				<label for="province">Province</label> 
 				<input type="text" name="province"/>
+			</li>
+			<li>
+				<label for="postal_code">Postal Code</label> 
+				<input type="text" name="postal_code"/>
 			</li>
 			<li class="news-li">
 				<label for="news">Yes, I am interested in hearing from Ottawa Tourism</label> 
@@ -158,21 +187,44 @@
 	</div>
 
 	<div class="form-confirm">
-		<p>Clips should be no longer than 15 seconds and preferably in high definition. Raw footage welcome, don't worry about editing.</p> 
+		<p>Sound: Music clips should be no more than a couple minutes. Lightly compresed formats preferred, or high quality MP3/AAC (320Kbps).
+		<p>Max Filesize 25MB / A couple minutes in length. Original material only please.</p> 
 		<input type="checkbox" name="agree"/>
 		<label for="agree">I certify I have read the <a href="#rules" class="terms">Terms & Conditions</a> and that this clip was made by me and includes recordings of only me and/or my friends</label> 
-		<input type="hidden" name="MAX_FILE_SIZE" value="26214400"/>
+		<br class="clear" />
+		<label for="clip_name" class="clip_label">Give your file a name</label>
+		<input type="text" name="clip_name"><br />
+		<label for="clip" class="clip_label">Upload a file..</label>
 		<input type="file" name="clip" class="clip"/>
-		<input type="submit" value="Submit" name="submit" class="submit" />
+		<input type="submit" value="Submit" name="submit-music" class="submit" />
 	</div> 
 	<input type="hidden" name="type" value="music"/>
 	<input type="hidden" name="confirm" class="confirm" value="false"/>
 	<input type="hidden" name="ip" value="<?=$_SERVER['REMOTE_ADDR'];?>"/>
 	<input type="hidden" name="agent" value="<?=$_SERVER['HTTP_USER_AGENT'];?>"/>
 	</form>
+	<a href="#rules" class="terms">Terms & Conditions</a>
+	<a href="#" id="ontario-link" target="_blank">Ontario</a>
+	<a href="#" id="ottawa-link" target="_blank">Ottawa</a>
 </div>
 
 <div id="thanks" class="page">
+	<a href="#" id="submit-more">Submit More</a>
 	<a href="#" id="fb-share">Share on Facebook</a>
 	<a href="#" id="twitter-share">Share on Twitter</a>
+	<a href="#rules" class="terms">Terms & Conditions</a>
+	<a href="#" id="ontario-link" target="_blank">Ontario</a>
+	<a href="#" id="ottawa-link" target="_blank">Ottawa</a>
 </div>
+
+<div id="loading"></div>
+
+<div class="hidden">
+<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+</div>
+
+<div id="demovideo"></div>

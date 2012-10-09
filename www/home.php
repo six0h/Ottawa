@@ -47,6 +47,7 @@ $date = date('U');
 	<script type="text/javascript" src="js/jquery-form.js"></script>
 	<script type="text/javascript" src="js/jquery-validate.js"></script>
 	<script type="text/javascript" src="js/jquery-fancybox.js"></script>
+	<script type="text/javascript" src="js/jquery-scrollTo.js"></script>
 	<script type="text/javascript" src="js/ottawa.js?date=<?php $date; ?>"></script>
 
 </head>
@@ -65,6 +66,13 @@ $date = date('U');
 
 </div>
 
+<div id="rules">
+Cupcake ipsum dolor sit amet muffin. Macaroon cotton candy apple pie. Brownie tiramisu I love jelly sweet dessert jelly-o.
+Fruitcake cupcake tart sugar plum bear claw. Pudding candy bonbon jelly-o marshmallow cheesecake. Candy powder fruitcake bear claw.
+Donut jujubes dragée pastry tiramisu sugar plum sesame snaps brownie chocolate cake. Lollipop croissant ice cream biscuit carrot cake gummi bears chocolate bar cupcake dessert. Macaroon sugar plum tart I love.
+Donut sweet lollipop sesame snaps marshmallow. Caramels cookie tootsie roll muffin fruitcake applicake I love dessert candy canes. Oat cake soufflé cupcake tootsie roll I love biscuit. Gummies jelly cookie danish macaroon faworki biscuit halvah.
+Sweet roll topping biscuit lollipop I love gummies I love macaroon. Dessert chocolate cake tart sweet. Chocolate icing fruitcake.
+</div>
 
 <script type="text/javascript">
 

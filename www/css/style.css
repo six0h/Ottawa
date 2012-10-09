@@ -41,27 +41,60 @@ a:active { outline: none; }
 #video .file-type-choice,
 #music .file-type-choice { top: 30px; left: 20%; }
 
-#one { left: 0; }
-
 .page .form { float: left; width: 300px; position: absolute; top: 300px; left: 175px; }
 .page .form ul { list-style: none; }
-.page .form ul li { margin: 10px 0 0 0; }
+.page .form ul li { margin: 5px 0 0 0; }
 .page .form label { display: block; width: 75px; float: left; padding: 4px 0 0 0; }
 .page .form .news-li label { width: 220px; }
 .page .form input { border: 1px solid #000; border-radius: 3px; background: #e6e4ba; padding: 3px; }
 .page .form ul li span { position: absolute; display: block; right: left: 0px; width: 300px; background: red; color: #fff; z-index: 1; padding: 3px; border-radius: 5px; }
 .page .form ul li span label { width: 100%; }
 
-.page .form-confirm { position: absolute; width: 300px; top: 310px; left: 440px; }
-.page .form-confirm p { margin: 0px 0 20px 0; }
+.page .form-confirm { position: absolute; width: 300px; top: 300px; left: 440px; }
+.page .form-confirm p { margin: 0px 0px 10px 0; }
 .page .form-confirm .clip { clear: both; display: block; margin: 10px 0 0 0; }
 .page .form-confirm .submit { margin: 20px 0 0 0; }
 .page .form-confirm ul { list-style: none; }
 .page .form-confirm ul li span { position: absolute; right: 0px; width: 300px; background: red; color: #fff; z-index: 1; padding: 3px; border-radius: 5px; }
 .page .form-confirm ul li span label { width: 100%; }
+.page .form-confirm input { border: 1px solid #000; border-radius: 3px; background: #e6e4ba; padding: 3px; }
+.clip_label { margin: 10px 0 0 0; display: block; clear: both;  }
 
-.submit { display: block; border: 0; width: 121px; height: 66px; background: url(../img/submit-btn.png) no-repeat; text-indent: -9999pt; }
+.page .form-confirm .submit { display: block; border: 0; width: 121px; height: 66px; background: url(../img/submit-btn.png) no-repeat; text-indent: -9999pt; }
 
 #thanks { background: url(../img/bg-thanks.jpg) no-repeat; }
 #thanks #fb-share { position: absolute; top: 343px; left: 114px; display: block; border: 0; width: 114px; height: 39px; background: url(../img/fb-share.png) no-repeat; text-indent: -9999pt; }
 #thanks #twitter-share { position: absolute; top: 343px; left: 240px; display: block; border: 0; width: 114px; height: 39px; background: url(../img/twitter-share.png) no-repeat; text-indent: -9999pt; }
+#thanks #submit-more { display: block; position: absolute; width: 120px; height: 120px; border: 0px solid #000; top: 272px; left: 405px; text-indent: -9999pt; } 
+
+#ontario-link { position: absolute; display: block; border: 0px solid #000; width: 160px; height: 75px; text-indent: -9999pt; }
+#ottawa-link { position: absolute; display: block; border: 0px solid #000; width: 170px; height: 75px; text-indent: -9999pt; }
+
+#one #ontario-link { bottom: 80px; left: 180px; }
+#one #ottawa-link { bottom: 80px; right: 170px; }
+#music #ontario-link { bottom: 570px; left: 165px; }
+#music #ottawa-link { bottom: 570px; right: 185px; }
+#photo #ontario-link { bottom: 570px; left: 165px; }
+#photo #ottawa-link { bottom: 570px; right: 185px; }
+#video #ontario-link { bottom: 570px; left: 165px; }
+#video #ottawa-link { bottom: 570px; right: 185px; }
+#thanks #ontario-link { bottom: 680px; left: 165px; }
+#thanks #ottawa-link { bottom: 680px; right: 185px; }
+
+#one { left: 0; }
+
+#one .terms { bottom: 20px; right: 190px; }
+#photo .terms { bottom: 513px; right: 210px; }
+#video .terms { bottom: 513px; right: 210px; }
+#music .terms { bottom: 513px; right: 210px; }
+#thanks .terms { bottom: 623px; right: 210px; }
+.terms { width: 120px; height: 20px; position: absolute; border: 0px solid #000; text-indent: -9999pt; }
+#rules { display: none; }
+
+.fancy { text-indent: -9999pt; }
+.submitted { position: absolute; display: block; border: 0px solid #000; width: 230px; height: 40px; top: 890px; right: 170px; }
+.hidden { display: none; }
+
+#loading { display: none; width: 170px; height: 227px; position: absolute; top: 470px; right: 310px; background: url(../img/loading.gif) no-repeat; }
+
+#demovideo { display: none; }

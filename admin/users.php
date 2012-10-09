@@ -11,6 +11,9 @@ if(isset($_POST['editUser'])) {
 	$userId		= $_POST['userId'];
 	$userFirstName	= $_POST['userFirstName'];
 	$userLastName	= $_POST['userLastName'];
+	$userCity	= $_POST['userCity'];
+	$userProvince	= $_POST['userProvince'];
+	$userPostal	= $_POST['userPostal'];
 	$userEmail	= $_POST['userEmail'];
 	$userAdmin	= $_POST['userAdmin'];
 	$userPass	= $_POST['userPass'];
@@ -37,7 +40,10 @@ if(isset($_POST['editUser'])) {
 		'first_name' => $userFirstName,
 		'last_name' => $userLastName,
 		'email' => $userEmail,
-		'admin' => $userAdmin));
+		'admin' => $userAdmin,
+		'city' => $userCity,
+		'province' => $userProvince,
+		'postal_code' => $userPostal));
 
 	try {
 		$db->update('users',$crit,$data);
@@ -81,6 +87,9 @@ if(isset($_GET['edit']) && isset($_GET['id']) && $_GET['id'] != '') {
 		<div id="userFirstNameDiv"><label for="userFirstName">First Name</label><input type="text" id="userFirstName" name="userFirstName" value="<?=$first_name?>" /></div>
 		<div id="userLastNameDiv"><label for="userLastName">Last Name</label><input type="text" id="userLastName" name="userLastName" value="<?=$last_name?>" /></div>
 		<div id="userEmailDiv"><label for="userEmail">Email</label><input type="text" id="userEmail" name="userEmail" value="<?=$email?>" /></div>
+		<div id="userCityDiv"><label for="userCity">City</label><input type="text" id="userCity" name="userCity" value="<?=$city?>"/></div>
+		<div id="userProvinceDiv"><label for="userProvince">Province</label><input type="text" id="userProvince" name="userProvince" value="<?=$province?>"/></div>
+		<div id="userPostalCodeDiv"><label for="userPostalCode">Postal Code</label><input type="text" id="userPostalCode" name="userPostalCode" value="<?=$postal_code?>"/></div>
 		<div id="userPassDiv"><label for="userPass">Password</label><input type="text" id="userPass" name="userPass" value="" /></div>
 		<div id="userAdminDiv"><label for="userAdmin">Admin</label><input type="checkbox" id="userAdmin" name="userAdmin" <?=$checked?> /></div>
 		<div id="userSubmitDiv"><input type="submit" name="editUser" id="editUser" /></div>
@@ -121,6 +130,9 @@ if(isset($_POST['addUser']) && $_POST['userEmail'] != '') {
 	$userEmail	= $_POST['userEmail'];
 	$userFirstName	= $_POST['userFirstName'];
 	$userLastName	= $_POST['userLastName'];
+	$userCity	= $_POST['userCity'];
+	$userProvince	= $_POST['userProvince'];
+	$userPostal	= $_POST['userPostal'];
 	$userAdmin	= $_POST['userAdmin'];
 	$userPass	= $_POST['userPass'];
 	$userPass2	= $_POST['userPass2'];
@@ -147,6 +159,9 @@ if(isset($_POST['addUser']) && $_POST['userEmail'] != '') {
 				'first_name' => $userFirstName,
 				'last_name' => $userLastName,
 				'email' => $userEmail,
+				'city' => $userCity,
+				'province' => $userProvince,
+				'postal_code' => $userPostal,
 				'date' => $userDate);
 			if(isset($userAdmin)) $crit['admin'] = $userAdmin;
 			$db->insert('users',$crit);
@@ -174,6 +189,9 @@ if(isset($_GET['add']) || isset($_POST['tryadd'])) {
 		<div id="userFirstNameDiv"><label for="userFirstName">First Name</label><input type="text" id="userFirstName" name="userFirstName" value="<?=$userFirstName;?>" /></div>
 		<div id="userLastNameDiv"><label for="userLastName">Last Name</label><input type="text" id="userLastName" name="userLastName" value="<?=$userLastName;?>" /></div>
 		<div id="userEmailDiv"><label for="userEmail">Email</label><input type="text" id="userEmail" name="userEmail" value="<?=$userEmail;?>" /></div>
+		<div id="userCityDiv"><label for="userCity">City</label><input type="text" id="userCity" name="userCity" value="<?=$userCity;?>" /></div>
+		<div id="userProvinceDiv"><label for="userProvince">Province</label><input type="text" id="userProvince" name="userProvince" value="<?=$userProvince;?>" /></div>
+		<div id="userPostalDiv"><label for="userPostal">Postal Code</label><input type="text" id="userPostal" name="userPostal" value="<?=$userPostal;?>" /></div>
 		<div id="userPassDiv"><label for="userPass">Password</label><input type="text" id="userPass" name="userPass"  value="" /></div>
 		<div id="userPass2Div"><label for="userPass2">... Again</label><input type="text" id="userPass2" name="userPass2" value="" /></div>
 		<div id="userAdminDiv" style="margin-top: 20px;"><label for="userAdmin">Admin</label><input type="checkbox" id="userAdmin" name="userAdmin" <?=$checked;?> /></div>
@@ -199,6 +217,9 @@ echo "<br />";
 			<th>First</th>
 			<th>Last</th>
 			<th>Email</th>
+			<th>City</th>
+			<th>Province</th>
+			<th>Postal</th>
 			<th>Date</th>
 			<th>IP</th>
 			<th>Edit</th>
@@ -215,6 +236,9 @@ echo "<br />";
 			<td><?php echo $first_name; ?></td>
 			<td><?php echo $last_name; ?></td>
 			<td><?php echo $email; ?></td>
+			<td><?php echo $city; ?></td>
+			<td><?php echo $province; ?></td>
+			<td><?php echo $postal_code; ?></td>
 			<td><?php echo date('m/d/Y h:i:s', $date->sec); ?></td>
 			<td><?php echo $ip; ?></td>
 			<td><a href="index.php?p=users&edit=1&id=<?php echo $_id;?>">Edit</a></td>
@@ -238,6 +262,9 @@ echo "<br />";
 			<th>First</th>
 			<th>Last</th>
 			<th>Email</th>
+			<th>City</th>
+			<th>Province</th>
+			<th>Postal Code</th>
 			<th>Date</th>
 			<th>IP</th>
 			<th>Edit</th>
@@ -254,6 +281,9 @@ echo "<br />";
 			<td><?php echo $first_name; ?></td>
 			<td><?php echo $last_name; ?></td>
 			<td><?php echo $email; ?></td>
+			<td><?php echo $city; ?></td>
+			<td><?php echo $province; ?></td>
+			<td><?php echo $postal_code; ?></td>
 			<td><?php echo date('m/d/Y h:i:s', $date->sec); ?></td>
 			<td><?php echo $ip; ?></td>
 			<td><a href="index.php?p=users&edit=1&id=<?php echo $_id;?>">Edit</a></td>

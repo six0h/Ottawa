@@ -57,6 +57,13 @@ if(isset($data['email']))
 	<h1><?=$site['name'];?></h1>
 	<span>Admin Panel</span>
 
+	<nav>
+		<ul>
+			<li><a href="<?=$_SERVER['PHP_SELF']?>?p=users">Users</a> </li> 
+			<li><a href="<?=$_SERVER['PHP_SELF']?>?p=files">Files</a> </li> 
+		</ul> 
+	</nav> 
+
 	<br class="clear" />
 	
 </header>
@@ -76,6 +83,12 @@ switch($p) {
 	case 'users':
 
 		require_once('users.php');
+
+	break;
+
+	case 'files':
+
+		require_once('files.php');
 
 	break;
 

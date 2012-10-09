@@ -16,8 +16,20 @@ class Db {
 
 	}
 
-	public function select($collection,$crit = array()) {
+	public function select($collection,$crit = array(),$options = array()) {
 		$record = $this->db->$collection->find($crit);
+		foreach($options as $key => $value) $$key = $value;
+			if(isset($limit)) $record->limit($limit);
+			if(isset($options['order'])) {
+				if($order =='asc') :
+					$order = 1;
+				else :
+					$order = -1;
+				endif;
+			} else {
+				$order = 1;
+			}
+			if(isset($sort)) $record->sort(array($sort=>$order));
 		return $record;
 	}
 
