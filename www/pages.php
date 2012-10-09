@@ -8,7 +8,8 @@
 	<a href="#rules" class="terms">Terms & Conditions</a>
 	<a href="#" id="ontario-link" target="_blank">Ontario</a>
 	<a href="#" id="ottawa-link" target="_blank">Ottawa</a>
-	<a class="fancy submitted" href="#demovideo" rel="group">See what others have submitted</a>
+	<a class="fancy-video video-submitted" href="#demovideo">See what others have submitted</a>
+	<a class="fancy-pic pic-submitted" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">See what others have submitted</a>
 </div>
 
 <div id="photo" class="page">
@@ -47,8 +48,8 @@
 				<input type="text" name="postal_code"/>
 			</li>
 			<li class="news-li">
-				<label for="news">Yes, I am interested in hearing from Ottawa Tourism</label> 
-				<input type="checkbox" name="news" CHECKED/>
+				<label for="news">Yes, I am interested in hearing from Ottawa Tourism and Ontario Tourism</label> 
+				<input type="checkbox" name="news"/>
 			</li>
 		</ul> 
 	</div>
@@ -116,7 +117,7 @@
 				<input type="text" name="postal_code"/>
 			</li>
 			<li class="news-li">
-				<label for="news">Yes, I am interested in hearing from Ottawa Tourism</label> 
+				<label for="news">Yes, I am interested in hearing from Ottawa Tourism and Ontario Tourism</label> 
 				<input type="checkbox" name="news"/>
 			</li>
 		</ul> 
@@ -180,7 +181,7 @@
 				<input type="text" name="postal_code"/>
 			</li>
 			<li class="news-li">
-				<label for="news">Yes, I am interested in hearing from Ottawa Tourism</label> 
+				<label for="news">Yes, I am interested in hearing from Ottawa Tourism and Ontario Tourism</label> 
 				<input type="checkbox" name="news"/>
 			</li>
 		</ul> 
@@ -220,11 +221,37 @@
 <div id="loading"></div>
 
 <div class="hidden">
-<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
-<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
-<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
-<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
-<a class="fancy" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+	<a class="fancy-pic" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+	<a class="fancy-pic" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+	<a class="fancy-pic" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+	<a class="fancy-pic" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
+	<a class="fancy-pic" href="https://ottawa.s3.amazonaws.com/haveone%40test.com-moretests.png" rel="group">Hidden Link</a>
 </div>
 
-<div id="demovideo"></div>
+
+<script type="text/javascript">
+
+// SETUP VIDEO PLAYER
+$(function() {
+
+	$('.fancy-pic').fancybox();
+
+	$('.fancy-video').fancybox({
+		'content':'<div id="mediaspace"></div>',
+		autoSize: false,
+		height: 300,
+		fitToView: true,
+		afterShow: function() {
+			if(this.href == '#demovideo') {
+				jwplayer('mediaspace').setup({
+					flashplayer: "js/player.swf",
+					file: "uploads/videos/demo.mp4",
+					width: '100%'
+				});
+			}
+		}
+	});
+
+});
+
+</script>

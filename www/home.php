@@ -48,6 +48,7 @@ $date = date('U');
 	<script type="text/javascript" src="js/jquery-validate.js"></script>
 	<script type="text/javascript" src="js/jquery-fancybox.js"></script>
 	<script type="text/javascript" src="js/jquery-scrollTo.js"></script>
+	<script type="text/javascript" src="js/jwplayer.js"></script>
 	<script type="text/javascript" src="js/ottawa.js?date=<?php $date; ?>"></script>
 
 </head>

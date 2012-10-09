@@ -29,6 +29,8 @@ a:active { outline: none; }
 
 #one .file-type-choice { height: 240px; overflow: hidden; bottom: 250px; left: 17%; }
 #one .submit-header { display: block; width: 391px; height: 72px; background: url(../img/submit-header.png) no-repeat 0 -72px; clear: both; margin: 0 auto 5px auto; }
+.video-submitted { position: absolute; display: block; border: 0px solid #000; width: 270px; height: 30px; top: 875px; right: 128px; }
+.pic-submitted { position: absolute; display: block; border: 0px solid #000; width: 290px; height: 30px; top: 910px; right: 108px; text-indent: -9999pt; }
 
 #photo .submit-header { display: block; width: 391px; height: 72px; background: url(../img/submit-header.png) no-repeat 0 0px; clear: both; margin: 0 auto 5px auto; }
 #video .submit-header { display: block; width: 391px; height: 72px; background: url(../img/submit-header.png) no-repeat 0 -72px; clear: both; margin: 0 auto 5px auto; }
@@ -49,6 +51,9 @@ a:active { outline: none; }
 .page .form input { border: 1px solid #000; border-radius: 3px; background: #e6e4ba; padding: 3px; }
 .page .form ul li span { position: absolute; display: block; right: left: 0px; width: 300px; background: red; color: #fff; z-index: 1; padding: 3px; border-radius: 5px; }
 .page .form ul li span label { width: 100%; }
+
+label { line-height: 15px; }
+p { line-height: 15px; }
 
 .page .form-confirm { position: absolute; width: 300px; top: 300px; left: 440px; }
 .page .form-confirm p { margin: 0px 0px 10px 0; }
@@ -91,8 +96,7 @@ a:active { outline: none; }
 .terms { width: 120px; height: 20px; position: absolute; border: 0px solid #000; text-indent: -9999pt; }
 #rules { display: none; }
 
-.fancy { text-indent: -9999pt; }
-.submitted { position: absolute; display: block; border: 0px solid #000; width: 230px; height: 40px; top: 890px; right: 170px; }
+.fancy, .fancy-video { text-indent: -9999pt; }
 .hidden { display: none; }
 
 #loading { display: none; width: 170px; height: 227px; position: absolute; top: 470px; right: 310px; background: url(../img/loading.gif) no-repeat; }

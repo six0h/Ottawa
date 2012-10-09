@@ -8,11 +8,6 @@
 /*
 /*///////////////*/
 
-// SETUP VIDEO PLAYER
-jwplayer('demovideo').setup({
-	flashplayer: "./js/player.swf",
-});
-
 $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 
 /*///////////////////////////////////////////////
@@ -41,9 +36,6 @@ $(function() { // ENCAPSULATE EVERYTHING IN JQUERY, EVEN FUNCTIONS
 	$('.music-link').click(function() {
 		callPage('music');
 	});
-
-// SEE WHAT OTHERS HAVE SUBMITTED
-	$('.fancy').fancybox();
 
 // FUNCTION TO CALL PAGES
 	function callPage(pageId) {
